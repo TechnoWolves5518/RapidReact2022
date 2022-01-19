@@ -9,11 +9,11 @@ import frc.robot.CommandBase;
 import frc.robot.Robot;
 
 public class DriveTrainCommand {
-    public DriveTrainCommand(){
-        //Makes sure this file requires driveSubsystem
-        requires(driveSubsystem)
-        //debug
-        if (RobotMap.debug){
+    public DriveTrainCommand() {
+        // Makes sure this file requires driveSubsystem
+        requires(driveSubsystem);
+        // debug
+        if (RobotMap.debug) {
             System.out.println("Drive Train Command Init");
         }
     }
@@ -52,7 +52,7 @@ public class DriveTrainCommand {
     // check bumpers in order to disable or enable safties manually
     public void checkBumpers() {
         //if both bumpers are pressed, don't disable eiteher safety
-        if ((cubicSafety == True) && (safetyMod == True)) {
+        if ((cubicSafety == True) && (safetyMode == True)) {
             System.out.println("Both Bumpers Pressed, Safeties enabled");
         } else {
             // if left bumper is pressed, disable speed mods
