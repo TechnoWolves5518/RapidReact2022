@@ -5,15 +5,16 @@ import frc.robot.oi;
 import frc.robot.RobotMap;
 //import libraries
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.CommandBase;
 import frc.robot.Robot;
 
-public class DriveTrainCommand {
-    public DriveTrainCommand(){
-        //Makes sure this file requires driveSubsystem
-        requires(driveSubsystem)
-        //debug
-        if (RobotMap.debug){
+public class DriveTrainCommand extends CommandBase {
+    public DriveTrainCommand() {
+        // Makes sure this file requires driveSubsystem
+        requires(driveSubsystem);
+        // debug
+        if (RobotMap.debug) {
             System.out.println("Drive Train Command Init");
         }
     }
@@ -51,8 +52,8 @@ public class DriveTrainCommand {
 
     // check bumpers in order to disable or enable safties manually
     public void checkBumpers() {
-        //if both bumpers are pressed, don't disable eiteher safety
-        if ((cubicSafety == True) && (safetyMod == True)) {
+        // if both bumpers are pressed, don't disable eiteher safety
+        if ((cubicSafety == true) && (safetyMode == true)) {
             System.out.println("Both Bumpers Pressed, Safeties enabled");
         } else {
             // if left bumper is pressed, disable speed mods
@@ -61,7 +62,7 @@ public class DriveTrainCommand {
             }
             // if left trigger is pressed, disable cubic safety
             if (cubicSafety == true) {
-                RobotMap.driveTrainSafety = !RobotMap driveTrainSafety;
+                RobotMap.driveTrainSafety = !RobotMap.driveTrainSafety;
             }
         }
     }
@@ -106,11 +107,8 @@ public class DriveTrainCommand {
 
     @Override
     protected boolean isFinished() {
+        // TODO Auto-generated method stub
         return false;
     }
 
-    @Override
-    protected void end() {
-
-    }
 }
