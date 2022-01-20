@@ -23,6 +23,7 @@ public class RobotMap {
 
     // drivetrain deadzone value
     public static double deadzone = 0.25;
+    private Object ControlMode;
 
     // control mode (required for VICTORSPX.set() functions)
     public ControlMode controlMode = ControlMode.PercentOutput;
