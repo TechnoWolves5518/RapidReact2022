@@ -18,8 +18,8 @@ public abstract class CommandBase extends Command {
     // declare new subsystems
     public static void init() {
         driveSubsystem = new DriveTrainSubsystem();
-        ShooterSubsystem = new ShooterMotorSubsystem();
-        intakeConveyorSubsystem = new IntakeConveyorSubsystem();
+        // ShooterSubsystem = new ShooterMotorSubsystem();
+        // intakeConveyorSubsystem = new IntakeConveyorSubsystem();
 
     }
 

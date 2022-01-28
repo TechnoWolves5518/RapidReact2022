@@ -52,7 +52,7 @@ public class DriveTrainSubsystem extends Subsystem {
         final double returnVar;
         if (slowMode == true) {
             returnVar = speed * .2;
-            System.out.println("slow mode activate for " + "side");
+            System.out.println("slow mode activate for " + side);
         } else {
             // if both modifiers are enabled
             if ((cubicSafety) && (speedMod)) {

@@ -27,15 +27,15 @@ public class RobotMap {
     public static double deadzone = 0.25;
 
     // control mode (required for VICTORSPX.set() functions)
-    public ControlMode control = ControlMode.PercentOutput;
+    public ControlMode controlMode = ControlMode.PercentOutput;
 
     // Motor Ports (CAN IDs)
     // note arbitrary values
     // started at 1, moved down to 8
-    public static int leftMotorLeader = 1; // left side
+    public static int leftMotorLeader = 4; // left side
     public static int leftMotorFollower = 2;
-    public static int rightMotorLeader = 3; // right side
-    public static int rightMotorFollower = 4;
+    public static int rightMotorLeader = 1; // right side
+    public static int rightMotorFollower = 3;
     // special functions motors
     // shooter motors
     public static int shooterMotorTop = 5;
