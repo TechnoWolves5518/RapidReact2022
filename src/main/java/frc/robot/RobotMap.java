@@ -5,7 +5,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 public class RobotMap {
     // Drivetrain safety toggles
     public static boolean driveTrainSafety = true;
-    public static double driveSafetySpeedMod = 0.3;
+    public static double driveSafetySpeedMod = 0.1;
     public static boolean driveSlowMod = false;
 
     // conveyor safety
@@ -25,13 +25,13 @@ public class RobotMap {
 
     // drivetrain deadzone value
     public static double deadzone = 0.25;
-    private Object ControlMode;
 
     // control mode (required for VICTORSPX.set() functions)
-    // public ControlMode controlMode = ControlMode.PercentOutput;
+    public ControlMode control = ControlMode.PercentOutput;
 
     // Motor Ports (CAN IDs)
     // note arbitrary values
+    // started at 1, moved down to 8
     public static int leftMotorLeader = 1; // left side
     public static int leftMotorFollower = 2;
     public static int rightMotorLeader = 3; // right side
