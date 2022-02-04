@@ -6,8 +6,9 @@ public class RobotMap {
     /// Drive Train Safety Toggles ///
 
     public static boolean driveTrainSafety = true;
-    public static double speedMod = .1;
+    public static double speedMod = .9;
     public static boolean driveSlowMod = false;
+    public static double safetyMod = 0.5;
 
     /// Debug Toggles ///
     public static final boolean debug = false;
