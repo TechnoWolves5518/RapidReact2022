@@ -52,18 +52,21 @@ public class DriveTrainCommand extends CommandBase {
     // slowmode = driver.getRightBumper();
     slowModeToggle = driver.getRightBumper();
 
+    // bumper check for slowmode
+
     if (slowModeToggle == true) {
       speedModifier = RobotMap.safetyMod;
     } else {
       speedModifier = RobotMap.speedMod;
     }
-
+    // deadzone check
     if (Math.abs(forwardSpeedLeft) < RobotMap.deadzone) {
       forwardSpeedLeft = 0;
     }
     if (Math.abs(forwardSpeedRight) < RobotMap.deadzone) {
       forwardSpeedRight = 0;
     }
+    // set up the motors
     driveTrainSubsystem.setMotors(
         Math.pow(-forwardSpeedLeft * RobotMap.speedMod, 3),
         Math.pow(forwardSpeedRight * RobotMap.speedMod, 3));

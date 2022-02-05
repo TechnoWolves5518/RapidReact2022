@@ -3,12 +3,13 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class RobotMap {
-    /// Drive Train Safety Toggles ///
+    // speed modifiers
 
-    public static boolean driveTrainSafety = true;
+    // ublic static boolean driveTrainSafety = true;
     public static double speedMod = .9;
     public static boolean driveSlowMod = false;
     public static double safetyMod = 0.5;
+    public static double intakeMod = 0.5;
 
     /// Debug Toggles ///
     public static final boolean debug = false;
@@ -25,4 +26,5 @@ public class RobotMap {
     public static final int leftMotorFollower = 2;
     public static final int rightMotorLeader = 1;
     public static final int rightMotorFollower = 3;
+    public static final int intakeMotor = 5;
 }

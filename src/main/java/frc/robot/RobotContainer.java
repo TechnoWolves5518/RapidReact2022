@@ -7,7 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveTrainCommand;
+import frc.robot.commands.IntakeCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -22,8 +24,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrainSubsystem m_exampleSubsystem = new DriveTrainSubsystem();
+  private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
 
   private final DriveTrainCommand m_autoCommand = new DriveTrainCommand(m_exampleSubsystem);
+  private final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSubsystem);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -32,6 +36,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     m_exampleSubsystem.setDefaultCommand(m_autoCommand);
+    m_intakeSubsystem.setDefaultCommand(m_intakeCommand);
   }
 
   /**
