@@ -12,7 +12,7 @@ public class IntakeCommand extends CommandBase {
 
     public IntakeCommand(IntakeSubsystem subsystem) {
         // debug code to ensure the subsystem works
-        System.out.println("IntakeSubsystem init");
+        System.out.println("Intake Command init");
         intakeSubsystem = subsystem;
         // require intake subsystem in order to run
         addRequirements(intakeSubsystem);
@@ -25,8 +25,6 @@ public class IntakeCommand extends CommandBase {
     public boolean outakeStatus = false;
     // set up a speed variable
     public double intakeSpeed = 1.0;
-    // import the speed modifier from robotmap
-    public double intakeSpeedMod = RobotMap.intakeMod;
 
     // run the code every time the command is scheduled(called)
     @Override
@@ -45,7 +43,7 @@ public class IntakeCommand extends CommandBase {
             intakeSpeed = 0;
         }
         // setup the motors
-        intakeSubsystem.setMotors(intakeSpeed);
+        intakeSubsystem.setMotors(intakeSpeed * RobotMap.intakeMod);
     }
 
 }

@@ -10,6 +10,7 @@ public class RobotMap {
     public static boolean driveSlowMod = false;
     public static double safetyMod = 0.5;
     public static double intakeMod = 0.5;
+    public static double conveyorMod = 0.5;
 
     /// Debug Toggles ///
     public static final boolean debug = false;
@@ -27,4 +28,5 @@ public class RobotMap {
     public static final int rightMotorLeader = 1;
     public static final int rightMotorFollower = 3;
     public static final int intakeMotor = 5;
+    public static final int conveyorMotor = 6;
 }
