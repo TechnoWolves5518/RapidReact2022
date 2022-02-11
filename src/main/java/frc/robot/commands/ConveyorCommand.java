@@ -12,7 +12,7 @@ public class ConveyorCommand extends CommandBase {
 
     public ConveyorCommand(ConveyorSubsystem subsystem) {
         // debug code to ensure command initializes
-        System.out.println("conveyor command init");
+        // System.out.println("conveyor command init");
         conveyorSubsystem = subsystem;
         // require conveyor subsystem in order to run
         addRequirements(conveyorSubsystem);
@@ -24,7 +24,7 @@ public class ConveyorCommand extends CommandBase {
     public boolean conveyorIn = false;
     public boolean conveyorOut = false;
     // set up a speed value
-    public double conveyorSpeed = 1.0;
+    public double conveyorSpeed = 0;
 
     // run the code when an input is detected
     @Override

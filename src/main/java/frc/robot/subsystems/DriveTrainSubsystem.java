@@ -18,7 +18,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   TalonSRX rightMotorFollower;
 
   public DriveTrainSubsystem() {
-    System.out.println("drive train subsystem init");
+    // System.out.println("drive train subsystem init");
     // define left side
     leftMotorFollower = new TalonSRX(RobotMap.leftMotorFollower);
     leftMotorLeader = new TalonSRX(RobotMap.leftMotorLeader);
@@ -34,7 +34,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
     rightMotorFollower.set(RobotMap.controlMode, right);
     rightMotorLeader.set(RobotMap.controlMode, right);
-    System.out.println("Left: " + left + " Right: " + right);
+    // System.out.println("Left: " + left + " Right: " + right);
   }
 
   @Override

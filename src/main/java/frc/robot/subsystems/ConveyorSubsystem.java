@@ -10,13 +10,13 @@ public class ConveyorSubsystem extends SubsystemBase {
     TalonSRX conveyorMotor;
 
     public ConveyorSubsystem() {
-        System.out.println("Conveyor Subsystem init");
+        // System.out.println("Conveyor Subsystem init");
         // assign can id to the motor
         conveyorMotor = new TalonSRX(RobotMap.conveyorMotor);
     }
 
     public void setMotors(double conveyor) {
         conveyorMotor.set(RobotMap.controlMode, conveyor);
-        System.out.println("Conveyor Speed: " + conveyor);
+        // System.out.println("Conveyor Speed: " + conveyor);
     }
 }

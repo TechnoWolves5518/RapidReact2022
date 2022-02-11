@@ -9,7 +9,7 @@ public class IntakeSubsystem extends SubsystemBase {
     TalonSRX intakeMotor;
 
     public IntakeSubsystem() {
-        System.out.println("Intake Subsystem init");
+        // System.out.println("Intake Subsystem init");
         // assign can id
         intakeMotor = new TalonSRX(RobotMap.intakeMotor);
     }

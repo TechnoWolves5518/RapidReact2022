@@ -21,7 +21,7 @@ public class DriveTrainCommand extends CommandBase {
    * @param subsystem The subsystem used by this command.
    */
   public DriveTrainCommand(DriveTrainSubsystem subsystem) {
-    System.out.println("Drive Train Command init");
+    // System.out.println("Drive Train Command init");
     driveTrainSubsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(driveTrainSubsystem);
