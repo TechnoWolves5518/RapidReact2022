@@ -5,8 +5,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.DriveTrainCommand;
 import edu.wpi.first.wpilibj.DigitalOutput;
 
 /**
@@ -20,8 +23,13 @@ import edu.wpi.first.wpilibj.DigitalOutput;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-
   private RobotContainer m_robotContainer;
+  private static final String kDefaultAuto = "Default";
+  private static final String kCustomAuto = "My Auto";
+  private String m_autoSelected;
+  private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  Command autonomousCommand;
+  int count;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -34,6 +42,9 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    m_chooser.setDefaultOption("Defualt Auto", kDefaultAuto);
+    m_chooser.addOption("my Auto", kCustomAuto);
+    SmartDashboard.putData("Auto choices", m_chooser);
   }
 
   /**
@@ -81,12 +92,25 @@ public class Robot extends TimedRobot {
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
+      count = 0;
+      m_autoSelected = m_chooser.getSelected();
+      System.out.println("Auto Selected" + m_autoSelected);
     }
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
+    switch (m_autoSelected) {
+      case kCustomAuto:
+        final DriveTrainCommand auto0 = new DriveTrainCommand(null);
+        auto0.forwardSpeedLeft = 0.5;
+        auto0.forwardSpeedRight = 0.5;
+        System.out.println("Auto mode neabled, kcustom");
+        break;
+      case kDefaultAuto:
+
+    }
   }
 
   @Override
