@@ -22,8 +22,10 @@ public class IntakeCommand extends CommandBase {
     private static XboxController specialFunctions = Constants.specialController;
     // check for whether or not intake is active
     public boolean intakeStatus, outakeStatus;
+    public boolean intakeControl, outakeControl;
     // set up a speed variable
     public double intakeSpeed = 1.0;
+    public double intakeControlSpeed;
 
     // run the code every time the command is scheduled(called)
     @Override
@@ -31,6 +33,8 @@ public class IntakeCommand extends CommandBase {
         // obtain button imputs
         intakeStatus = specialFunctions.getAButton();
         outakeStatus = specialFunctions.getBButton();
+        intakeControl = specialFunctions.getRightBumper();
+        outakeControl = specialFunctions.getLeftBumper();
         System.out.println("intake: " + intakeStatus);
         System.out.println("outake: " + outakeStatus);
         // check for which direction to move the intake system
@@ -43,8 +47,19 @@ public class IntakeCommand extends CommandBase {
         } else {
             intakeSpeed = 0;
         }
+        // check for which direction to spin the intake angler thing
+        if (intakeControl && outakeControl == true) {
+            intakeControlSpeed = 0;
+        } else if (intakeControl == true) {
+            intakeControlSpeed = 1;
+        } else if (outakeControl == true) {
+            intakeControlSpeed = -1;
+        } else {
+            intakeControlSpeed = 0;
+        }
         // setup the motors
         intakeSubsystem.setMotors(intakeSpeed * RobotMap.intakeMod);
+        intakeSubsystem.setMotor(intakeControlSpeed * RobotMap.intakeControlMod);
     }
 
 }

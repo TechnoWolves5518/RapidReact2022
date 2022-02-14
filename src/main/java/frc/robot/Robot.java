@@ -101,16 +101,18 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        final DriveTrainCommand auto0 = new DriveTrainCommand(null);
-        auto0.forwardSpeedLeft = 0.5;
-        auto0.forwardSpeedRight = 0.5;
-        System.out.println("Auto mode neabled, kcustom");
-        break;
-      case kDefaultAuto:
-
-    }
+    /*
+     * switch (m_autoSelected) {
+     * case kCustomAuto:
+     * final DriveTrainCommand auto0 = new DriveTrainCommand(null);
+     * auto0.forwardSpeedLeft = 0.5;
+     * auto0.forwardSpeedRight = 0.5;
+     * System.out.println("Auto mode neabled, kcustom");
+     * break;
+     * case kDefaultAuto:
+     * 
+     * }
+     */
   }
 
   @Override

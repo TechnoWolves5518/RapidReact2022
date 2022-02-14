@@ -13,6 +13,7 @@ public class RobotMap {
     public static double conveyorMod = 0.5;
     public static double topPort = 0.9;
     public static double bottomPort = 0.5;
+    public static double intakeControlMod = 0.2;
 
     /// Debug Toggles ///
     public static final boolean debug = false;
@@ -33,4 +34,5 @@ public class RobotMap {
     public static final int conveyorMotor = 6;
     public static final int shooterMotorTop = 7;
     public static final int shooterMotorBottom = 8;
+    public static final int intakeControlMotor = 9;
 }
