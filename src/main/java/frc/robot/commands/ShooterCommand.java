@@ -38,11 +38,11 @@ public class ShooterCommand extends CommandBase {
             bottomShooterSpeed = 0;
             port = 0;
         } else if (highPortCheck == true) {
-            topShooterSpeed = 1;
+            topShooterSpeed = -1;
             bottomShooterSpeed = 1;
             port = RobotMap.topPort;
         } else if (lowPortCheck == true) {
-            topShooterSpeed = 1;
+            topShooterSpeed = -1;
             bottomShooterSpeed = 1;
             port = RobotMap.bottomPort;
         } else {
@@ -53,6 +53,6 @@ public class ShooterCommand extends CommandBase {
         // set the motor speed based on the input
         shooterSubsystem.setMotors(
                 topShooterSpeed * port,
-                bottomShooterSpeed * port);
+                -bottomShooterSpeed * port);
     }
 }

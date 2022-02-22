@@ -36,9 +36,9 @@ public class ConveyorCommand extends CommandBase {
         if (conveyorIn && conveyorOut == true) {
             conveyorSpeed = 0;
         } else if (conveyorIn == true) {
-            conveyorSpeed = 1;
-        } else if (conveyorOut == true) {
             conveyorSpeed = -1;
+        } else if (conveyorOut == true) {
+            conveyorSpeed = 1;
         } else {
             conveyorSpeed = 0;
         }

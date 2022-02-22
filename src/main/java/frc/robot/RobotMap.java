@@ -6,12 +6,12 @@ public class RobotMap {
     // speed modifiers
 
     // ublic static boolean driveTrainSafety = true;
-    public static double speedMod = .9;
+    public static double speedMod = .7;
     public static boolean driveSlowMod = false;
     public static double safetyMod = 0.5;
     public static double intakeMod = 0.5;
-    public static double conveyorMod = 0.5;
-    public static double topPort = 0.9;
+    public static double conveyorMod = 0.8;
+    public static double topPort = 1;
     public static double bottomPort = 0.5;
     public static double intakeControlMod = 0.2;
 
@@ -26,13 +26,15 @@ public class RobotMap {
     public static ControlMode controlMode = ControlMode.PercentOutput;
 
     /// Motor Ports (CAN BUS) ///
+    // drive train
     public static final int leftMotorLeader = 4;
-    public static final int leftMotorFollower = 2;
+    public static final int leftMotorFollower = 3;
     public static final int rightMotorLeader = 1;
-    public static final int rightMotorFollower = 3;
-    public static final int intakeMotor = 5;
-    public static final int conveyorMotor = 6;
-    public static final int shooterMotorTop = 7;
-    public static final int shooterMotorBottom = 8;
-    public static final int intakeControlMotor = 9;
+    public static final int rightMotorFollower = 2;
+    // special functions
+    public static final int intakeMotor = 10; // not used
+    public static final int conveyorMotor = 5;
+    public static final int shooterMotorTop = 6;
+    public static final int shooterMotorBottom = 7;
+    public static final int intakeControlMotor = 9; // not used
 }
