@@ -10,10 +10,10 @@ public class RobotMap {
     public static boolean driveSlowMod = false;
     public static double safetyMod = 0.5;
     public static double intakeMod = 0.5;
-    public static double conveyorMod = 0.8;
+    public static double conveyorMod = 1;
     public static double topPort = 1;
     public static double bottomPort = 0.5;
-    public static double intakeControlMod = 0.2;
+    public static double intakeControlMod = 0.15;
 
     /// Debug Toggles ///
     public static final boolean debug = false;

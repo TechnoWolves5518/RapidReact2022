@@ -18,12 +18,12 @@ public class IntakeSubsystem extends SubsystemBase {
 
     public void setMotors(double middle) {
         intakeMotor.set(RobotMap.controlMode, middle);
-        System.out.println("Intake Speed: " + middle);
+        // System.out.println("Intake Speed: " + middle);
     }
 
     public void setMotor(double controlSpeed) {
         intakeControlMotor.set(RobotMap.controlMode, controlSpeed);
-        System.out.println("Intake Control Speed: " + controlSpeed);
+        // System.out.println("Intake Control Speed: " + controlSpeed);
     }
 
 }

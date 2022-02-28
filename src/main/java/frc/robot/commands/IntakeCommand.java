@@ -3,6 +3,7 @@ package frc.robot.commands;
 import frc.robot.Constants;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.IntakeSubsystem;
+//import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -12,7 +13,7 @@ public class IntakeCommand extends CommandBase {
 
     public IntakeCommand(IntakeSubsystem subsystem) {
         // debug code to ensure the subsystem works
-        System.out.println("Intake Command init");
+        // System.out.println("Intake Command init");
         intakeSubsystem = subsystem;
         // require intake subsystem in order to run
         addRequirements(intakeSubsystem);
@@ -26,17 +27,37 @@ public class IntakeCommand extends CommandBase {
     // set up a speed variable
     public double intakeSpeed = 1.0;
     public double intakeControlSpeed;
+    // set up variables for toggle control
+    boolean toggleMode = false;
+    boolean toggleSwitch = false;
+    // set up a tick counting variable
+    public int count = 0;
 
     // run the code every time the command is scheduled(called)
+    public void updateToggle() {
+        if (specialFunctions.getRightBumper()) {
+            if (!toggleSwitch) {
+                toggleMode = !toggleMode;
+                toggleSwitch = true;
+            }
+        } else {
+            toggleSwitch = false;
+        }
+    }
+
     @Override
     public void execute() {
+        // activate updateToggle
+        updateToggle();
         // obtain button imputs
         intakeStatus = specialFunctions.getAButton();
         outakeStatus = specialFunctions.getBButton();
-        intakeControl = specialFunctions.getRightBumper();
+        intakeControl = toggleMode;
         outakeControl = specialFunctions.getLeftBumper();
-        System.out.println("intake: " + intakeStatus);
-        System.out.println("outake: " + outakeStatus);
+        /*
+         * System.out.println("intake: " + intakeStatus);
+         * System.out.println("outake: " + outakeStatus);
+         */
         // check for which direction to move the intake system
         if (intakeStatus && outakeStatus == true) {
             intakeSpeed = 0;
@@ -51,9 +72,31 @@ public class IntakeCommand extends CommandBase {
         if (intakeControl && outakeControl == true) {
             intakeControlSpeed = 0;
         } else if (intakeControl == true) {
-            intakeControlSpeed = 1;
+            if (count < 100) {
+                intakeControlSpeed = 1;
+                count++;
+                System.out.println(count);
+            } else {
+                intakeControlSpeed = 0;
+                count = 0;
+                intakeControl = false;
+                toggleMode = false;
+                System.out.println("tick number " + count);
+                System.out.println("intake control status " + intakeControl);
+            }
         } else if (outakeControl == true) {
-            intakeControlSpeed = -1;
+            if (count < 100) {
+                intakeControlSpeed = -1;
+                count++;
+                System.out.println(count);
+            } else {
+                intakeControlSpeed = 0;
+                count = 0;
+                outakeControl = false;
+                toggleMode = false;
+                System.out.println("tick number " + count);
+                System.out.println("intake control status " + intakeControl);
+            }
         } else {
             intakeControlSpeed = 0;
         }

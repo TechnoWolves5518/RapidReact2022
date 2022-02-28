@@ -68,8 +68,8 @@ public class DriveTrainCommand extends CommandBase {
     }
     // set up the motors
     driveTrainSubsystem.setMotors(
-        Math.pow(-forwardSpeedLeft * RobotMap.speedMod, 3),
-        Math.pow(forwardSpeedRight * RobotMap.speedMod, 3));
+        Math.pow(-forwardSpeedLeft * speedModifier, 3),
+        Math.pow(forwardSpeedRight * speedModifier, 3));
   }
 
   // System.out.println("Left: " + forwardSpeedLeft + " Right: " +
