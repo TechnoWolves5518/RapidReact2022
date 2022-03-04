@@ -9,7 +9,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.ConveyorCommand;
 import frc.robot.commands.DriveTrainCommand;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.ShooterCommand;
+import frc.robot.subsystems.ConveyorSubsystem;
+import frc.robot.subsystems.DriveTrainSubsystem;
 import edu.wpi.first.wpilibj.DigitalOutput;
 
 /**
@@ -24,8 +29,12 @@ import edu.wpi.first.wpilibj.DigitalOutput;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
+  // setup autonomous
+
+  // test autonomous
+  private static final String kDefaultAuto = "test Auto";
+  // actual auto, from the fender
+  private static final String kCustomAuto = "Fender Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   Command autonomousCommand;
@@ -42,8 +51,8 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    m_chooser.setDefaultOption("Defualt Auto", kDefaultAuto);
-    m_chooser.addOption("my Auto", kCustomAuto);
+    m_chooser.setDefaultOption("Test Auto", kDefaultAuto);
+    m_chooser.addOption("Fender Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
   }
 
@@ -79,7 +88,7 @@ public class Robot extends TimedRobot {
   public void disabledPeriodic() {
   }
 
-  /**
+  /*
    * This autonomous runs the autonomous command selected by your
    * {@link RobotContainer} class.
    */
@@ -89,30 +98,38 @@ public class Robot extends TimedRobot {
     try (DigitalOutput Output = new DigitalOutput(0)) {
       Output.set(false);
     }
+    System.out.println("autonomous initiated");
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
-      count = 0;
-      m_autoSelected = m_chooser.getSelected();
-      System.out.println("Auto Selected" + m_autoSelected);
-    }
+    m_autonomousCommand.schedule();
+    m_autoSelected = m_chooser.getSelected();
+    System.out.println("Auto Selected " + m_autoSelected);
+
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    /*
-     * switch (m_autoSelected) {
-     * case kCustomAuto:
-     * final DriveTrainCommand auto0 = new DriveTrainCommand(null);
-     * auto0.forwardSpeedLeft = 0.5;
-     * auto0.forwardSpeedRight = 0.5;
-     * System.out.println("Auto mode neabled, kcustom");
-     * break;
-     * case kDefaultAuto:
-     * 
-     * }
-     */
+    switch (m_autoSelected) {
+      case kDefaultAuto:
+        count = 0;
+        System.out.println("case selected.");
+        final RobotContainer driveAuto0 = new RobotContainer();
+        System.out.println(driveAuto0.toString());
+        // final ConveyorCommand conveyorauto0 = new ConveyorCommand(null);
+        // final ShooterCommand shooterauto0 = new ShooterCommand(null);
+        if (count < 500) {
+          /*
+           * driveAuto0.driverAutoMode = true;
+           * driveAuto0.forwardSpeedLeft = -0.7;
+           * driveAuto0.forwardSpeedLeft = 0.7;
+           * driveAuto0.execute();
+           * count++;
+           * System.out.println("autonomous test running");
+           */
+        }
+
+      case kCustomAuto:
+    }
   }
 
   @Override

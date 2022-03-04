@@ -33,7 +33,6 @@ public class DriveTrainCommand extends CommandBase {
   // speed values
   public double forwardSpeedLeft, forwardSpeedRight;
   // public boolean slowModeToggle;
-
   // public boolean slowmode;
   public boolean slowModeToggle = false;
   public double speedModifier = RobotMap.speedMod;
@@ -53,7 +52,6 @@ public class DriveTrainCommand extends CommandBase {
     slowModeToggle = driver.getRightBumper();
 
     // bumper check for slowmode
-
     if (slowModeToggle == true) {
       speedModifier = RobotMap.safetyMod;
     } else {
@@ -68,8 +66,9 @@ public class DriveTrainCommand extends CommandBase {
     }
     // set up the motors
     driveTrainSubsystem.setMotors(
-        Math.pow(-forwardSpeedLeft * speedModifier, 3),
-        Math.pow(forwardSpeedRight * speedModifier, 3));
+        -forwardSpeedLeft * speedModifier,
+        forwardSpeedRight * speedModifier);
+
   }
 
   // System.out.println("Left: " + forwardSpeedLeft + " Right: " +

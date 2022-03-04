@@ -6,7 +6,7 @@ public class RobotMap {
     // speed modifiers
 
     // ublic static boolean driveTrainSafety = true;
-    public static double speedMod = .7;
+    public static double speedMod = 0.7;
     public static boolean driveSlowMod = false;
     public static double safetyMod = 0.5;
     public static double intakeMod = 0.5;
@@ -36,5 +36,5 @@ public class RobotMap {
     public static final int conveyorMotor = 5;
     public static final int shooterMotorTop = 6;
     public static final int shooterMotorBottom = 7;
-    public static final int intakeControlMotor = 9; // not used
+    public static final int wenchMotor = 9;
 }

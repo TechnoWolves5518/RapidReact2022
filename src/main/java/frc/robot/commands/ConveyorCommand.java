@@ -32,7 +32,7 @@ public class ConveyorCommand extends CommandBase {
         // obtain button inputs
         conveyorIn = specialFunctions.getXButton();
         conveyorOut = specialFunctions.getYButton();
-        // check for which direction to move the conveyor
+        // check for which direction to move the conveyor in teleop
         if (conveyorIn && conveyorOut == true) {
             conveyorSpeed = 0;
         } else if (conveyorIn == true) {

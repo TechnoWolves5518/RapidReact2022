@@ -7,13 +7,13 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class IntakeSubsystem extends SubsystemBase {
     // define motor
     TalonSRX intakeMotor;
-    TalonSRX intakeControlMotor;
+    TalonSRX wenchMotor;
 
     public IntakeSubsystem() {
         // System.out.println("Intake Subsystem init");
         // assign can id
         intakeMotor = new TalonSRX(RobotMap.intakeMotor);
-        intakeControlMotor = new TalonSRX(RobotMap.intakeControlMotor);
+        wenchMotor = new TalonSRX(RobotMap.wenchMotor);
     }
 
     public void setMotors(double middle) {
@@ -22,8 +22,8 @@ public class IntakeSubsystem extends SubsystemBase {
     }
 
     public void setMotor(double controlSpeed) {
-        intakeControlMotor.set(RobotMap.controlMode, controlSpeed);
-        // System.out.println("Intake Control Speed: " + controlSpeed);
+        wenchMotor.set(RobotMap.controlMode, controlSpeed);
+        // System.out.println("wench running");
     }
 
 }
