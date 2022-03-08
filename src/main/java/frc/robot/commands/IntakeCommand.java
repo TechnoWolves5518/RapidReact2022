@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj.SynchronousInterrupt;
@@ -21,7 +22,7 @@ public class IntakeCommand extends CommandBase {
     }
 
     // create a new controller for the special functions
-    private static XboxController specialFunctions = Constants.specialController;
+    private static XboxController specialFunctions = RobotContainer.specialController;
     // check for whether or not intake is active
     public boolean intakeStatus, outakeStatus;
     public boolean intakeControl, outakeControl;
@@ -38,7 +39,7 @@ public class IntakeCommand extends CommandBase {
         outakeControl = specialFunctions.getLeftBumper();
         /*
          * System.out.println("intake: " + intakeStatus);
-         * System.out.println("outake: " + outakeStatus);
+         * System.out.println("outake: " + outakeStatus);c
          */
         // check for which direction to move the intake system
         /*

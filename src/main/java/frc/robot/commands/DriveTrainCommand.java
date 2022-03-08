@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
@@ -29,7 +30,7 @@ public class DriveTrainCommand extends CommandBase {
   }
 
   // create a new controller for the driver
-  private static XboxController driver = Constants.driverController;
+  private static XboxController driver = RobotContainer.driverController;
   // speed values
   public double forwardSpeedLeft, forwardSpeedRight;
   // public boolean slowModeToggle;

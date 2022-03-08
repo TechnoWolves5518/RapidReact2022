@@ -5,16 +5,18 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.ConveyorCommand;
+//import frc.robot.commands.ConveyorCommand;
 import frc.robot.commands.DriveTrainCommand;
 import frc.robot.commands.IntakeCommand;
-import frc.robot.commands.ShooterCommand;
+//import frc.robot.commands.ShooterCommand;
 import frc.robot.subsystems.ConveyorSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj.DigitalOutput;
 
 /**
@@ -27,7 +29,7 @@ import edu.wpi.first.wpilibj.DigitalOutput;
  * project.
  */
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
+  public Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
   // setup autonomous
 
@@ -38,7 +40,13 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   Command autonomousCommand;
-  int count;
+  // set autonomous variables
+  double autoTop = 1;
+  double autoBottom = -1;
+  // auto start time
+  private double startTime;
+  // subsystem imports
+  private ShooterSubsystem shooterAuto = RobotContainer.m_shooterSubsystem;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -103,32 +111,22 @@ public class Robot extends TimedRobot {
     m_autonomousCommand.schedule();
     m_autoSelected = m_chooser.getSelected();
     System.out.println("Auto Selected " + m_autoSelected);
-
+    // set auto start time
+    startTime = Timer.getFPGATimestamp();
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kDefaultAuto:
-        count = 0;
-        System.out.println("case selected.");
-        final RobotContainer driveAuto0 = new RobotContainer();
-        System.out.println(driveAuto0.toString());
-        // final ConveyorCommand conveyorauto0 = new ConveyorCommand(null);
-        // final ShooterCommand shooterauto0 = new ShooterCommand(null);
-        if (count < 500) {
-          /*
-           * driveAuto0.driverAutoMode = true;
-           * driveAuto0.forwardSpeedLeft = -0.7;
-           * driveAuto0.forwardSpeedLeft = 0.7;
-           * driveAuto0.execute();
-           * count++;
-           * System.out.println("autonomous test running");
-           */
-        }
-
-      case kCustomAuto:
+    double time = Timer.getFPGATimestamp();
+    if (m_autoSelected == kDefaultAuto) {
+      System.out.println("autonomous enabled");
+      if (time - startTime < 2) {
+        shooterAuto.setMotors(-1, 1);
+        System.out.println("auto action performed");
+      }
+    } else {
+      shooterAuto.setMotors(0, 0);
     }
   }
 
@@ -146,7 +144,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    System.out.println("running");
+    // System.out.println("running");
     CommandScheduler.getInstance().run();
   }
 
