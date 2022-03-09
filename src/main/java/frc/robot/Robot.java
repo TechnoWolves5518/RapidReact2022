@@ -5,18 +5,22 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
+//import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.ScheduleCommand;
+import frc.robot.commands.ShooterHigh;
+import frc.robot.commands.Autonomous_Commands.BasicAuto;
 //import frc.robot.commands.ConveyorCommand;
-import frc.robot.commands.DriveTrainCommand;
-import frc.robot.commands.IntakeCommand;
+//import frc.robot.commands.DriveTrainCommand;
+//import frc.robot.commands.IntakeCommand;
+//import frc.robot.commands.ShooterHigh;
 //import frc.robot.commands.ShooterCommand;
-import frc.robot.subsystems.ConveyorSubsystem;
-import frc.robot.subsystems.DriveTrainSubsystem;
-import frc.robot.subsystems.ShooterSubsystem;
+//import frc.robot.subsystems.ConveyorSubsystem;
+//import frc.robot.subsystems.DriveTrainSubsystem;
+//import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj.DigitalOutput;
 
 /**
@@ -44,9 +48,9 @@ public class Robot extends TimedRobot {
   double autoTop = 1;
   double autoBottom = -1;
   // auto start time
-  private double startTime;
+  // private double startTime;
   // subsystem imports
-  private ShooterSubsystem shooterAuto = RobotContainer.m_shooterSubsystem;
+  // private ShooterSubsystem shooterAuto = RobotContainer.m_shooterSubsystem;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -106,28 +110,26 @@ public class Robot extends TimedRobot {
     try (DigitalOutput Output = new DigitalOutput(0)) {
       Output.set(false);
     }
+    m_autonomousCommand = new BasicAuto();
     System.out.println("autonomous initiated");
     // schedule the autonomous command (example)
     m_autonomousCommand.schedule();
     m_autoSelected = m_chooser.getSelected();
     System.out.println("Auto Selected " + m_autoSelected);
+
     // set auto start time
-    startTime = Timer.getFPGATimestamp();
+    // startTime = Timer.getFPGATimestamp();
+    // set run the autonomous code when autonomous is enabled
+    if (m_autoSelected == kDefaultAuto) {
+      CommandScheduler.getInstance().schedule(m_autonomousCommand);
+      // RobotContainer.m_shooterSubsystem.setMotors(-1, 1);
+    }
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    double time = Timer.getFPGATimestamp();
-    if (m_autoSelected == kDefaultAuto) {
-      System.out.println("autonomous enabled");
-      if (time - startTime < 2) {
-        shooterAuto.setMotors(-1, 1);
-        System.out.println("auto action performed");
-      }
-    } else {
-      shooterAuto.setMotors(0, 0);
-    }
+
   }
 
   @Override
