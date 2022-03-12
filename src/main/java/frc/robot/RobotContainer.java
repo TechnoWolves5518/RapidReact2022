@@ -5,10 +5,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.AutoHighShoot;
 //import frc.robot.commands.ConveyorCommand;
 import frc.robot.commands.ConveyorIn;
 import frc.robot.commands.ConveyorOut;
+import frc.robot.commands.DriveBackward;
 import frc.robot.subsystems.ConveyorSubsystem;
 import frc.robot.commands.DriveTrainCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
@@ -33,7 +36,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  public final DriveTrainSubsystem m_exampleSubsystem = new DriveTrainSubsystem();
+  public final static DriveTrainSubsystem m_exampleSubsystem = new DriveTrainSubsystem();
   public final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   public final static ConveyorSubsystem m_conveyorSubsystem = new ConveyorSubsystem();
   public final static ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
@@ -54,9 +57,12 @@ public class RobotContainer {
   // button bindings for driver controller
   JoystickButton driveryButton = new JoystickButton(driverController, Constants.yButton);
   JoystickButton driverxButton = new JoystickButton(driverController, Constants.xButton);
+  JoystickButton driverStartButton = new JoystickButton(driverController, Constants.startButton);
+  // Constants.startButton);
   // button bindings for special functions controller
   JoystickButton specialyButton = new JoystickButton(specialController, Constants.yButton);
   JoystickButton specialxButton = new JoystickButton(specialController, Constants.xButton);
+  JoystickButton specialLStickButton = new JoystickButton(specialController, Constants.leftStickButton);
 
   public RobotContainer() {
     configureButtonBindings();
@@ -77,8 +83,10 @@ public class RobotContainer {
   private void configureButtonBindings() {
     driveryButton.whileHeld(new ShooterHigh());
     driverxButton.whileHeld(new ShooterLow());
+    driverStartButton.whenPressed(new DriveBackward());
     specialyButton.whileHeld(new ConveyorIn());
     specialxButton.whileHeld(new ConveyorOut());
+    specialLStickButton.whenPressed(new AutoHighShoot());
   }
 
   /**

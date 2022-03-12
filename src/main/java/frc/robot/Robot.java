@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.ScheduleCommand;
 import frc.robot.commands.ShooterHigh;
-import frc.robot.commands.Autonomous_Commands.BasicAuto;
+import frc.robot.commands.Autonomous_Commands.FullAuto;
+import frc.robot.commands.Autonomous_Commands.shootHub;
 //import frc.robot.commands.ConveyorCommand;
 //import frc.robot.commands.DriveTrainCommand;
 //import frc.robot.commands.IntakeCommand;
@@ -110,7 +111,7 @@ public class Robot extends TimedRobot {
     try (DigitalOutput Output = new DigitalOutput(0)) {
       Output.set(false);
     }
-    m_autonomousCommand = new BasicAuto();
+    m_autonomousCommand = new FullAuto();
     System.out.println("autonomous initiated");
     // schedule the autonomous command (example)
     m_autonomousCommand.schedule();
