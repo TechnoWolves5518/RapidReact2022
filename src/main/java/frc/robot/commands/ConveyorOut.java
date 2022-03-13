@@ -22,6 +22,8 @@ public class ConveyorOut extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // run the conveyor out as long as the x botton is pressed on the special
+    // functions controller
     RobotContainer.m_conveyorSubsystem.setMotors(-1);
   }
 

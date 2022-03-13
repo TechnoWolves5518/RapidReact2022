@@ -4,12 +4,13 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
 public class AutoConveyorIn extends CommandBase {
+  // set a time count variable
   int count = 0;
+  // set a force stop variable
   boolean stopCheck = false;
 
   /** Creates a new AutoConveyorIn. */
@@ -26,7 +27,9 @@ public class AutoConveyorIn extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // set the conveyor to run
     RobotContainer.m_conveyorSubsystem.setMotors(1);
+    // run the autonomous conveyor loop for about 1.5 seconds, then force stop
     if (count < 75) {
       count++;
     } else {

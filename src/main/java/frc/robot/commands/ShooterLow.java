@@ -27,6 +27,7 @@ public class ShooterLow extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // run shooter at lower power while X is pressed on the driver controller
     RobotContainer.m_shooterSubsystem.setMotors(-1 * port, -1 * port);
   }
 

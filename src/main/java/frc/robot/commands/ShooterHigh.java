@@ -27,6 +27,7 @@ public class ShooterHigh extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // run shooter at full when driver controller has a "Y" input
     RobotContainer.m_shooterSubsystem.setMotors(-1 * port, -1 * port);
   }
 

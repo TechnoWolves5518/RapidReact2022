@@ -4,7 +4,6 @@
 
 package frc.robot.commands.Autonomous_Commands;
 
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import frc.robot.commands.AutoHighShoot;
 import frc.robot.commands.ConveyorIn;
@@ -15,10 +14,10 @@ import frc.robot.commands.ConveyorIn;
 public class shootHub extends ParallelDeadlineGroup {
   /** Creates a new ShootHigh. */
   public shootHub() {
-    // Add the deadline command in the super() call. Add other commands using
-    // addCommands().
+    // run the shooter for a period of time, force the command group to end when
+    // finished.
     super(new AutoHighShoot());
-    // addCommands(new FooCommand(), new BarCommand());
+    // run the conveyor as long as the shooter is running
     addCommands(new ConveyorIn());
   }
 }

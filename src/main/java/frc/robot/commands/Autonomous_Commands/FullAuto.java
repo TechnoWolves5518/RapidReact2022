@@ -8,8 +8,6 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.AutoConveyorIn;
 import frc.robot.commands.DriveBackward;
 import frc.robot.commands.DriveForward;
-import frc.robot.commands.Autonomous_Commands.DriveToBall;
-import frc.robot.commands.Autonomous_Commands.shootHub;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -20,6 +18,8 @@ public class FullAuto extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
+        // shoot the ball, drive to the ball outside the tarmac, pick it upk, drive back
+        // to the fender and shoot
         new shootHub(), new DriveBackward(), new AutoConveyorIn(), new DriveForward(), new shootHub());
   }
 }

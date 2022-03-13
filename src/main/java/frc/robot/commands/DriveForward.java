@@ -4,13 +4,14 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 
 public class DriveForward extends CommandBase {
+  // create a time count variable
   int count = 0;
+  // create a force stop variable
   boolean stopCheck = false;
 
   /** Creates a new DriveForward. */
@@ -27,6 +28,7 @@ public class DriveForward extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // drive the bot forward for a set amount of time, then stop
     RobotContainer.m_exampleSubsystem.setMotors(1 * RobotMap.speedMod, -1 * RobotMap.speedMod);
     if (count < 95) {
       count++;

@@ -4,13 +4,14 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 
 public class DriveBackward extends CommandBase {
+  // set a time count variable
   int count = 0;
+  // set a force stop variables
   boolean stopCheck = false;
 
   /** Creates a new DriveForward. */
@@ -27,7 +28,9 @@ public class DriveBackward extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // force the motors to go backward
     RobotContainer.m_exampleSubsystem.setMotors(-1 * RobotMap.speedMod, 1 * RobotMap.speedMod);
+    // check if code has run long enough, if it has, force stop the command
     if (count < 90) {
       count++;
     } else {

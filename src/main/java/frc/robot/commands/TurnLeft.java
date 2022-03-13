@@ -6,17 +6,18 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.RobotMap;
 
-public class AutoHighShoot extends CommandBase {
-  /** Creates a new AutoHighShoot. */
-  // create a time count variable
+public class TurnLeft extends CommandBase {
+  /** Creates a new TurnLeft. */
+  // set time count variable
   int count = 0;
-  // create a force stop variable
-  boolean stopCheck = false;
+  // set force stop variable
+  boolean stopCheck;
 
-  public AutoHighShoot() {
+  public TurnLeft() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_shooterSubsystem);
+    addRequirements(RobotContainer.m_exampleSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -27,10 +28,8 @@ public class AutoHighShoot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // run the shooter motors at full power for 5 seconds, then force stop the
-    // command
-    RobotContainer.m_shooterSubsystem.setMotors(-1, -1);
-    if (count < 250) {
+    RobotContainer.m_exampleSubsystem.setMotors(1 * RobotMap.speedMod, 1 * RobotMap.speedMod);
+    if (count < 25) {
       count++;
     } else {
       count = 0;
@@ -41,7 +40,7 @@ public class AutoHighShoot extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_shooterSubsystem.setMotors(0, 0);
+    RobotContainer.m_exampleSubsystem.setMotors(0, 0);
   }
 
   // Returns true when the command should end.

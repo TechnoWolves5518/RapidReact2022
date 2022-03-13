@@ -5,19 +5,19 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.AutoHighShoot;
 //import frc.robot.commands.ConveyorCommand;
 import frc.robot.commands.ConveyorIn;
 import frc.robot.commands.ConveyorOut;
-import frc.robot.commands.DriveBackward;
 import frc.robot.subsystems.ConveyorSubsystem;
 import frc.robot.commands.DriveTrainCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterHigh;
 import frc.robot.commands.ShooterLow;
+import frc.robot.commands.TurnLeft;
+import frc.robot.commands.TurnRight;
 import frc.robot.subsystems.IntakeSubsystem;
 //import frc.robot.commands.ShooterCommand;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -58,6 +58,7 @@ public class RobotContainer {
   JoystickButton driveryButton = new JoystickButton(driverController, Constants.yButton);
   JoystickButton driverxButton = new JoystickButton(driverController, Constants.xButton);
   JoystickButton driverStartButton = new JoystickButton(driverController, Constants.startButton);
+  JoystickButton driverBackButton = new JoystickButton(driverController, Constants.backButton);
   // Constants.startButton);
   // button bindings for special functions controller
   JoystickButton specialyButton = new JoystickButton(specialController, Constants.yButton);
@@ -81,9 +82,13 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    // these lines let certain commands run when certain buttons are pressed
+    // driver controller binds
     driveryButton.whileHeld(new ShooterHigh());
     driverxButton.whileHeld(new ShooterLow());
-    driverStartButton.whenPressed(new DriveBackward());
+    driverStartButton.whenPressed(new TurnRight());
+    driverBackButton.whenPressed(new TurnLeft());
+    // special controller binds
     specialyButton.whileHeld(new ConveyorIn());
     specialxButton.whileHeld(new ConveyorOut());
     specialLStickButton.whenPressed(new AutoHighShoot());
