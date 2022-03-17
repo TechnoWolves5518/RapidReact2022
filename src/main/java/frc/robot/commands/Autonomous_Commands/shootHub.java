@@ -6,6 +6,7 @@ package frc.robot.commands.Autonomous_Commands;
 
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import frc.robot.commands.AutoHighShoot;
+import frc.robot.commands.AutoWench;
 import frc.robot.commands.ConveyorIn;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -18,6 +19,6 @@ public class shootHub extends ParallelDeadlineGroup {
     // finished.
     super(new AutoHighShoot());
     // run the conveyor as long as the shooter is running
-    addCommands(new ConveyorIn());
+    addCommands(new ConveyorIn(), new AutoWench());
   }
 }

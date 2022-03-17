@@ -4,18 +4,20 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.RobotMap;
 
-public class ConveyorIn extends CommandBase {
-  /** Creates a new Conveyor2point0. */
-  double stallStop = RobotContainer.m_conveyorSubsystem.stallCheck;
-  static XboxController special = RobotContainer.specialController;
+public class AutoWench extends CommandBase {
+  /** Creates a new AutoWench. */
+  // create a time check variable
+  int count = 0;
+  // create a force stop variable
+  boolean stopCheck = false;
 
-  public ConveyorIn() {
+  public AutoWench() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_conveyorSubsystem);
+    addRequirements(RobotContainer.m_intakeSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -26,20 +28,24 @@ public class ConveyorIn extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // run the conveyor in as long as the y button is pressed on the special
-    // functions controller
-    RobotContainer.m_conveyorSubsystem.setMotors(1);
+    RobotContainer.m_intakeSubsystem.setMotor(-1 * RobotMap.intakeControlMod);
+    if (count < 50) {
+      count++;
+    } else {
+      count = 0;
+      stopCheck = true;
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_conveyorSubsystem.setMotors(0);
+    RobotContainer.m_intakeSubsystem.setMotor(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return stopCheck;
   }
 }

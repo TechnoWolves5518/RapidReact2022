@@ -20,6 +20,6 @@ public class FullAuto extends SequentialCommandGroup {
     addCommands(
         // shoot the ball, drive to the ball outside the tarmac, pick it upk, drive back
         // to the fender and shoot
-        new shootHub(), new DriveBackward(), new AutoConveyorIn(), new DriveForward(), new shootHub());
+        new shootHub(), new DriveBackward(), new AutoConveyorIn(), new DriveForward(), new shootHub2());
   }
 }

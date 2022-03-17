@@ -6,10 +6,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.AutoHighShoot;
+//import frc.robot.commands.AutoHighShoot;
 //import frc.robot.commands.ConveyorCommand;
 import frc.robot.commands.ConveyorIn;
 import frc.robot.commands.ConveyorOut;
+import frc.robot.commands.DriveBackward;
+import frc.robot.commands.DriveForward;
 import frc.robot.subsystems.ConveyorSubsystem;
 import frc.robot.commands.DriveTrainCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
@@ -24,6 +26,7 @@ import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 // import frc.robot.Constants;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -37,7 +40,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public final static DriveTrainSubsystem m_exampleSubsystem = new DriveTrainSubsystem();
-  public final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
+  public final static IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   public final static ConveyorSubsystem m_conveyorSubsystem = new ConveyorSubsystem();
   public final static ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
 
@@ -57,8 +60,14 @@ public class RobotContainer {
   // button bindings for driver controller
   JoystickButton driveryButton = new JoystickButton(driverController, Constants.yButton);
   JoystickButton driverxButton = new JoystickButton(driverController, Constants.xButton);
-  JoystickButton driverStartButton = new JoystickButton(driverController, Constants.startButton);
-  JoystickButton driverBackButton = new JoystickButton(driverController, Constants.backButton);
+  // JoystickButton driverStartButton = new JoystickButton(driverController,
+  // Constants.startButton);
+  // JoystickButton driverBackButton = new JoystickButton(driverController,
+  // Constants.backButton);
+  POVButton driverRightPOV = new POVButton(driverController, 270);
+  POVButton driverLeftPOV = new POVButton(driverController, 90);
+  POVButton driverForwardPOV = new POVButton(driverController, 0);
+  POVButton driverBackwardPOV = new POVButton(driverController, 180);
   // Constants.startButton);
   // button bindings for special functions controller
   JoystickButton specialyButton = new JoystickButton(specialController, Constants.yButton);
@@ -86,12 +95,13 @@ public class RobotContainer {
     // driver controller binds
     driveryButton.whileHeld(new ShooterHigh());
     driverxButton.whileHeld(new ShooterLow());
-    driverStartButton.whenPressed(new TurnRight());
-    driverBackButton.whenPressed(new TurnLeft());
+    driverRightPOV.whileHeld(new TurnRight());
+    driverLeftPOV.whileHeld(new TurnLeft());
+    driverForwardPOV.whileHeld(new DriveForward());
+    driverBackwardPOV.whileHeld(new DriveBackward());
     // special controller binds
     specialyButton.whileHeld(new ConveyorIn());
     specialxButton.whileHeld(new ConveyorOut());
-    specialLStickButton.whenPressed(new AutoHighShoot());
   }
 
   /**

@@ -10,11 +10,6 @@ import frc.robot.RobotMap;
 
 public class TurnRight extends CommandBase {
   /** Creates a new TurnRight. */
-  // set a time counting command
-  int count = 0;
-  // set a force stop boolean
-  boolean stopCheck = false;
-
   public TurnRight() {
     // Use addRequirements() here to declare subsystem dependencies
     addRequirements(RobotContainer.m_exampleSubsystem);
@@ -31,12 +26,6 @@ public class TurnRight extends CommandBase {
     // set the motors to turn right
     RobotContainer.m_exampleSubsystem.setMotors(-1 * RobotMap.speedMod, -1 * RobotMap.speedMod);
     // check if code has run long enough, if it has, force stop the command
-    if (count < 25) {
-      count++;
-    } else {
-      count = 0;
-      stopCheck = true;
-    }
   }
 
   // Called once the command ends or is interrupted.
@@ -48,6 +37,6 @@ public class TurnRight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return stopCheck;
+    return false;
   }
 }

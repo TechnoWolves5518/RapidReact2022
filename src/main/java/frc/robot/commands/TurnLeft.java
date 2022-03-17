@@ -10,11 +10,6 @@ import frc.robot.RobotMap;
 
 public class TurnLeft extends CommandBase {
   /** Creates a new TurnLeft. */
-  // set time count variable
-  int count = 0;
-  // set force stop variable
-  boolean stopCheck;
-
   public TurnLeft() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_exampleSubsystem);
@@ -29,12 +24,6 @@ public class TurnLeft extends CommandBase {
   @Override
   public void execute() {
     RobotContainer.m_exampleSubsystem.setMotors(1 * RobotMap.speedMod, 1 * RobotMap.speedMod);
-    if (count < 25) {
-      count++;
-    } else {
-      count = 0;
-      stopCheck = true;
-    }
   }
 
   // Called once the command ends or is interrupted.
@@ -46,6 +35,6 @@ public class TurnLeft extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return stopCheck;
+    return false;
   }
 }
