@@ -5,7 +5,7 @@
 package frc.robot.commands.Autonomous_Commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.commands.AutoConveyorIn;
+import frc.robot.commands.AutoConveyorIn2;
 import frc.robot.commands.DriveBackward;
 import frc.robot.commands.DriveForward;
 
@@ -20,6 +20,10 @@ public class FullAuto extends SequentialCommandGroup {
     addCommands(
         // shoot the ball, drive to the ball outside the tarmac, pick it upk, drive back
         // to the fender and shoot
-        new shootHub(), new DriveBackward(), new AutoConveyorIn(), new DriveForward(), new shootHub2());
+        new shootHub(),
+        new DriveBackward(),
+        new AutoConveyorIn2(),
+        new DriveForward(),
+        new shootHub2());
   }
 }

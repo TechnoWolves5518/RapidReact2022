@@ -12,8 +12,8 @@ public class RobotMap {
     public static double intakeMod = 0.5;
     public static double conveyorMod = 1;
     public static double topPort = 1;
-    public static double bottomPort = 0.5;
-    public static double intakeControlMod = 0.15;
+    public static double bottomPort = 0.6;
+    public static double intakeControlMod = 0.3;
 
     /// Debug Toggles ///
     public static final boolean debug = false;

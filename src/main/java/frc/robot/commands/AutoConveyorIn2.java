@@ -7,14 +7,14 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class AutoConveyorIn extends CommandBase {
+public class AutoConveyorIn2 extends CommandBase {
   // set a time count variable
   int count = 0;
   // set a force stop variable
   boolean stopCheck = false;
 
   /** Creates a new AutoConveyorIn. */
-  public AutoConveyorIn() {
+  public AutoConveyorIn2() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_conveyorSubsystem);
   }
@@ -30,7 +30,7 @@ public class AutoConveyorIn extends CommandBase {
     // set the conveyor to run
     RobotContainer.m_conveyorSubsystem.setMotors(1);
     // run the autonomous conveyor loop for about 1.5 seconds, then force stop
-    if (count < 75) {
+    if (count < 100) {
       count++;
     } else {
       count = 0;

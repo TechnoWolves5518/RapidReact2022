@@ -6,18 +6,17 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import frc.robot.RobotMap;
 
-public class DriveForward extends CommandBase {
-  // create a time count variable
+public class AutoConveyorIn1 extends CommandBase {
+  // set a time count variable
   int count = 0;
-  // create a force stop variable
+  // set a force stop variable
   boolean stopCheck = false;
 
-  /** Creates a new DriveForward. */
-  public DriveForward() {
+  /** Creates a new AutoConveyorIn. */
+  public AutoConveyorIn1() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_exampleSubsystem);
+    addRequirements(RobotContainer.m_conveyorSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -28,9 +27,13 @@ public class DriveForward extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // drive the bot forward for a set amount of time, then stop
-    RobotContainer.m_exampleSubsystem.setMotors(1 * RobotMap.speedMod, -1 * RobotMap.speedMod);
-    if (count < 80) {
+
+    // run the autonomous conveyor loop for about 1.5 seconds, then force stop
+    if (count < 75) {
+      count++;
+    } else if (count < 400) {
+      // set the conveyor to run
+      RobotContainer.m_conveyorSubsystem.setMotors(1);
       count++;
     } else {
       count = 0;
@@ -41,7 +44,7 @@ public class DriveForward extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_exampleSubsystem.setMotors(0, 0);
+    RobotContainer.m_conveyorSubsystem.setMotors(0);
   }
 
   // Returns true when the command should end.

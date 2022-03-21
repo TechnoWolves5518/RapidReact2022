@@ -17,6 +17,7 @@ public class DriveToBall extends ParallelDeadlineGroup {
     // Add the deadline command in the super() call. Add other commands using
     // addCommands().
     super(new DriveForward());
+    // run conveyor as long as bot is driving
     addCommands(new ConveyorIn());
   }
 }

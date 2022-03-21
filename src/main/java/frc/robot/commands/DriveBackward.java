@@ -31,7 +31,7 @@ public class DriveBackward extends CommandBase {
     // force the motors to go backward
     RobotContainer.m_exampleSubsystem.setMotors(-1 * RobotMap.speedMod, 1 * RobotMap.speedMod);
     // check if code has run long enough, if it has, force stop the command
-    if (count < 90) {
+    if (count < 75) {
       count++;
     } else {
       count = 0;
