@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.Autonomous_Commands.FullAuto;
+import frc.robot.commands.Autonomous_Commands.Autonomous_Command_Groups.FullAuto;
 //import frc.robot.commands.ConveyorCommand;
 //import frc.robot.commands.DriveTrainCommand;
 //import frc.robot.commands.IntakeCommand;

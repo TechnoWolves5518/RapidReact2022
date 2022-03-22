@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.XboxController;
 //import frc.robot.commands.ConveyorCommand;
 import frc.robot.commands.ConveyorIn;
 import frc.robot.commands.ConveyorOut;
-import frc.robot.commands.DriveBackward;
-import frc.robot.commands.DriveForward;
 import frc.robot.subsystems.ConveyorSubsystem;
 import frc.robot.commands.DriveTrainCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
@@ -20,6 +18,8 @@ import frc.robot.commands.ShooterHigh;
 import frc.robot.commands.ShooterLow;
 import frc.robot.commands.TurnLeft;
 import frc.robot.commands.TurnRight;
+import frc.robot.commands.Autonomous_Commands.AutoDriveBackward1;
+import frc.robot.commands.Autonomous_Commands.AutoDriveForward;
 import frc.robot.subsystems.IntakeSubsystem;
 //import frc.robot.commands.ShooterCommand;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -97,8 +97,8 @@ public class RobotContainer {
     driverxButton.whileHeld(new ShooterLow());
     driverRightPOV.whileHeld(new TurnRight());
     driverLeftPOV.whileHeld(new TurnLeft());
-    driverForwardPOV.whileHeld(new DriveForward());
-    driverBackwardPOV.whileHeld(new DriveBackward());
+    driverForwardPOV.whileHeld(new AutoDriveForward());
+    driverBackwardPOV.whileHeld(new AutoDriveBackward1());
     // special controller binds
     specialyButton.whileHeld(new ConveyorIn());
     specialxButton.whileHeld(new ConveyorOut());

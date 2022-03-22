@@ -2,21 +2,21 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.Autonomous_Commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-//import frc.robot.Robot;
 import frc.robot.RobotContainer;
-import frc.robot.RobotMap;
-//import frc.robot.subsystems.ShooterSubsystem;
 
-public class ShooterLow extends CommandBase {
-  double port = RobotMap.bottomPort;
+public class AutoConveyorIn1 extends CommandBase {
+  // set a time count variable
+  int count = 0;
+  // set a force stop variable
+  boolean stopCheck = false;
 
-  /** Creates a new ShooterHigh. */
-  public ShooterLow() {
+  /** Creates a new AutoConveyorIn. */
+  public AutoConveyorIn1() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_shooterSubsystem);
+    addRequirements(RobotContainer.m_conveyorSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -27,19 +27,30 @@ public class ShooterLow extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // run shooter at lower power while X is pressed on the driver controller
-    RobotContainer.m_shooterSubsystem.setMotors(-1 * port, 1 * port);
+
+    // run the autonomous conveyor loop for about 1.5 seconds, run until stopped by
+    // command group
+    if (count < 75) {
+      count++;
+    } else if (count < 400) {
+      // set the conveyor to run
+      RobotContainer.m_conveyorSubsystem.setMotors(1);
+      count++;
+    } else {
+      count = 0;
+      stopCheck = true;
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_shooterSubsystem.setMotors(0, 0);
+    RobotContainer.m_conveyorSubsystem.setMotors(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return stopCheck;
   }
 }

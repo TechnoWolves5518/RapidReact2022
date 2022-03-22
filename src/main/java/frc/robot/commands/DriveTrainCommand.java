@@ -35,6 +35,7 @@ public class DriveTrainCommand extends CommandBase {
   // public boolean slowModeToggle;
   // public boolean slowmode;
   public boolean slowModeToggle = false;
+  public boolean fastModeToggle = false;
   public double speedModifier = RobotMap.speedMod;
 
   // Called when the command is initially scheduled.
@@ -49,11 +50,16 @@ public class DriveTrainCommand extends CommandBase {
     forwardSpeedLeft = driver.getLeftY();
     forwardSpeedRight = driver.getRightY();
     // slowmode = driver.getRightBumper();
-    slowModeToggle = driver.getRightBumper();
+    fastModeToggle = driver.getRightBumper();
+    slowModeToggle = driver.getLeftBumper();
 
     // bumper check for slowmode
-    if (slowModeToggle == true) {
-      speedModifier = RobotMap.safetyMod;
+    if (fastModeToggle && slowModeToggle == true) {
+      speedModifier = RobotMap.speedMod;
+    } else if (fastModeToggle == true) {
+      speedModifier = RobotMap.fastMod;
+    } else if (slowModeToggle == true) {
+      speedModifier = RobotMap.slowmod;
     } else {
       speedModifier = RobotMap.speedMod;
     }

@@ -28,7 +28,7 @@ public class ShooterHigh extends CommandBase {
   @Override
   public void execute() {
     // run shooter at full when driver controller has a "Y" input
-    RobotContainer.m_shooterSubsystem.setMotors(-1 * port, -1 * port);
+    RobotContainer.m_shooterSubsystem.setMotors(-1 * port, 1 * port);
   }
 
   // Called once the command ends or is interrupted.
