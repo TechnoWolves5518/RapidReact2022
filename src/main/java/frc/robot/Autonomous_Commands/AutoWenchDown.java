@@ -2,22 +2,22 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.Autonomous_Commands;
+package frc.robot.Autonomous_Commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 
-public class AutoDriveBackward2 extends CommandBase {
-  // set a time count variable
+public class AutoWenchDown extends CommandBase {
+  /** Creates a new AutoWench. */
+  // create a time check variable
   int count = 0;
-  // set a force stop variables
+  // create a force stop variable
   boolean stopCheck = false;
 
-  /** Creates a new DriveForward. */
-  public AutoDriveBackward2() {
+  public AutoWenchDown() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_exampleSubsystem);
+    addRequirements(RobotContainer.m_intakeSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -28,10 +28,8 @@ public class AutoDriveBackward2 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // force the motors to go backward
-    RobotContainer.m_exampleSubsystem.setMotors(-1 * RobotMap.fastMod, 1 * RobotMap.fastMod);
-    // check if code has run long enough, if it has, force stop the command
-    if (count < 100) {
+    RobotContainer.m_intakeSubsystem.setMotor(-1 * RobotMap.intakeControlMod);
+    if (count < 50) {
       count++;
     } else {
       count = 0;
@@ -42,7 +40,7 @@ public class AutoDriveBackward2 extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_exampleSubsystem.setMotors(0, 0);
+    RobotContainer.m_intakeSubsystem.setMotor(0);
   }
 
   // Returns true when the command should end.

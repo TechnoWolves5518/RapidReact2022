@@ -6,10 +6,13 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.ClimberDown;
+import frc.robot.commands.ClimberUp;
 //import frc.robot.commands.AutoHighShoot;
 //import frc.robot.commands.ConveyorCommand;
 import frc.robot.commands.ConveyorIn;
 import frc.robot.commands.ConveyorOut;
+import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ConveyorSubsystem;
 import frc.robot.commands.DriveTrainCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
@@ -18,8 +21,8 @@ import frc.robot.commands.ShooterHigh;
 import frc.robot.commands.ShooterLow;
 import frc.robot.commands.TurnLeft;
 import frc.robot.commands.TurnRight;
-import frc.robot.commands.Autonomous_Commands.AutoDriveBackward1;
-import frc.robot.commands.Autonomous_Commands.AutoDriveForward;
+//import frc.robot.commands.Autonomous_Commands.AutoDriveBackward1;
+//import frc.robot.commands.Autonomous_Commands.AutoDriveForward;
 import frc.robot.subsystems.IntakeSubsystem;
 //import frc.robot.commands.ShooterCommand;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -43,6 +46,7 @@ public class RobotContainer {
   public final static IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   public final static ConveyorSubsystem m_conveyorSubsystem = new ConveyorSubsystem();
   public final static ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
+  public final static ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
 
   private final DriveTrainCommand m_autoCommand = new DriveTrainCommand(m_exampleSubsystem);
   private final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSubsystem);
@@ -66,13 +70,15 @@ public class RobotContainer {
   // Constants.backButton);
   POVButton driverRightPOV = new POVButton(driverController, 270);
   POVButton driverLeftPOV = new POVButton(driverController, 90);
-  POVButton driverForwardPOV = new POVButton(driverController, 0);
-  POVButton driverBackwardPOV = new POVButton(driverController, 180);
+  // POVButton driverUpPOV = new POVButton(driverController, 0);
+  // POVButton driverDownPOV = new POVButton(driverController, 180);
   // Constants.startButton);
   // button bindings for special functions controller
   JoystickButton specialyButton = new JoystickButton(specialController, Constants.yButton);
   JoystickButton specialxButton = new JoystickButton(specialController, Constants.xButton);
   JoystickButton specialLStickButton = new JoystickButton(specialController, Constants.leftStickButton);
+  POVButton specialUpPOV = new POVButton(specialController, 0);
+  POVButton specialDownPOV = new POVButton(specialController, 180);
 
   public RobotContainer() {
     configureButtonBindings();
@@ -97,11 +103,13 @@ public class RobotContainer {
     driverxButton.whileHeld(new ShooterLow());
     driverRightPOV.whileHeld(new TurnRight());
     driverLeftPOV.whileHeld(new TurnLeft());
-    driverForwardPOV.whileHeld(new AutoDriveForward());
-    driverBackwardPOV.whileHeld(new AutoDriveBackward1());
+    // driverUpPOV.whileHeld(new AutoDriveForward());
+    // driverDownPOV.whileHeld(new AutoDriveBackward1());
     // special controller binds
     specialyButton.whileHeld(new ConveyorIn());
     specialxButton.whileHeld(new ConveyorOut());
+    specialUpPOV.whileHeld(new ClimberUp());
+    specialDownPOV.whileHeld(new ClimberDown());
   }
 
   /**

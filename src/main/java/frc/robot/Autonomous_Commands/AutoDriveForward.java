@@ -2,21 +2,22 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.Autonomous_Commands;
+package frc.robot.Autonomous_Commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.RobotMap;
 
-public class AutoConveyorIn2 extends CommandBase {
-  // set a time count variable
+public class AutoDriveForward extends CommandBase {
+  // create a time count variable
   int count = 0;
-  // set a force stop variable
+  // create a force stop variable
   boolean stopCheck = false;
 
-  /** Creates a new AutoConveyorIn. */
-  public AutoConveyorIn2() {
+  /** Creates a new DriveForward. */
+  public AutoDriveForward() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_conveyorSubsystem);
+    addRequirements(RobotContainer.m_exampleSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -27,10 +28,9 @@ public class AutoConveyorIn2 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // set the conveyor to run
-    RobotContainer.m_conveyorSubsystem.setMotors(1);
-    // run the autonomous conveyor loop for about 2.5 seconds, then force stop
-    if (count < 125) {
+    // drive the bot forward for a set amount of time, then stop
+    RobotContainer.m_exampleSubsystem.setMotors(1 * RobotMap.speedMod, -1 * RobotMap.speedMod);
+    if (count < 80) {
       count++;
     } else {
       count = 0;
@@ -41,7 +41,7 @@ public class AutoConveyorIn2 extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_conveyorSubsystem.setMotors(0);
+    RobotContainer.m_exampleSubsystem.setMotors(0, 0);
   }
 
   // Returns true when the command should end.

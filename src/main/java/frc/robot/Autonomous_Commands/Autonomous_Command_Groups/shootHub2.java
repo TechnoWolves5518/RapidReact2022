@@ -2,11 +2,11 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.Autonomous_Commands.Autonomous_Command_Groups;
+package frc.robot.Autonomous_Commands.Autonomous_Command_Groups;
 
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
+import frc.robot.Autonomous_Commands.AutoConveyorIn1;
 import frc.robot.commands.ShooterHigh;
-import frc.robot.commands.Autonomous_Commands.AutoConveyorIn1;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
