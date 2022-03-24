@@ -32,8 +32,8 @@ public class RobotMap {
     // drive train
     public static final int leftMotorLeader = 3;
     public static final int leftMotorFollower = 4;
-    public static final int rightMotorLeader = 2;
-    public static final int rightMotorFollower = 1;
+    public static final int rightMotorLeader = 1;
+    public static final int rightMotorFollower = 2;
     // special functions
     public static final int intakeMotor = 50; // not used
     public static final int conveyorMotor = 5;

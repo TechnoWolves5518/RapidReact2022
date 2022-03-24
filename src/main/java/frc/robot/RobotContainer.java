@@ -12,6 +12,8 @@ import frc.robot.commands.ClimberUp;
 //import frc.robot.commands.ConveyorCommand;
 import frc.robot.commands.ConveyorIn;
 import frc.robot.commands.ConveyorOut;
+import frc.robot.commands.DriveBackward;
+import frc.robot.commands.DriveForward;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ConveyorSubsystem;
 import frc.robot.commands.DriveTrainCommand;
@@ -70,8 +72,8 @@ public class RobotContainer {
   // Constants.backButton);
   POVButton driverRightPOV = new POVButton(driverController, 270);
   POVButton driverLeftPOV = new POVButton(driverController, 90);
-  // POVButton driverUpPOV = new POVButton(driverController, 0);
-  // POVButton driverDownPOV = new POVButton(driverController, 180);
+  POVButton driverUpPOV = new POVButton(driverController, 0);
+  POVButton driverDownPOV = new POVButton(driverController, 180);
   // Constants.startButton);
   // button bindings for special functions controller
   JoystickButton specialyButton = new JoystickButton(specialController, Constants.yButton);
@@ -103,8 +105,8 @@ public class RobotContainer {
     driverxButton.whileHeld(new ShooterLow());
     driverRightPOV.whileHeld(new TurnRight());
     driverLeftPOV.whileHeld(new TurnLeft());
-    // driverUpPOV.whileHeld(new AutoDriveForward());
-    // driverDownPOV.whileHeld(new AutoDriveBackward1());
+    driverUpPOV.whileHeld(new DriveForward());
+    driverDownPOV.whileHeld(new DriveBackward());
     // special controller binds
     specialyButton.whileHeld(new ConveyorIn());
     specialxButton.whileHeld(new ConveyorOut());

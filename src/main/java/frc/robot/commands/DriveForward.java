@@ -9,13 +9,14 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 
-public class TurnRight extends CommandBase {
-  /** Creates a new TurnRight. */
+public class DriveForward extends CommandBase {
+  /** Creates a new DriveForward. */
   XboxController driver = RobotContainer.driverController;
+
   double speedModifier;
 
-  public TurnRight() {
-    // Use addRequirements() here to declare subsystem dependencies
+  public DriveForward() {
+    // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_exampleSubsystem);
   }
 
@@ -27,10 +28,9 @@ public class TurnRight extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // set the motors to turn right
     // bumper check for slowmode
-    boolean fastModeToggle = driver.getLeftBumper();
-    boolean slowModeToggle = driver.getRightBumper();
+    boolean fastModeToggle = driver.getRightBumper();
+    boolean slowModeToggle = driver.getLeftBumper();
     if (fastModeToggle && slowModeToggle == true) {
       speedModifier = RobotMap.speedMod;
     } else if (fastModeToggle == true) {
@@ -41,15 +41,13 @@ public class TurnRight extends CommandBase {
       speedModifier = RobotMap.speedMod;
     }
     RobotContainer.m_exampleSubsystem.setMotors(
-        -1 * speedModifier,
+        1 * speedModifier,
         -1 * speedModifier);
-    // check if code has run long enough, if it has, force stop the command
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_exampleSubsystem.setMotors(0, 0);
   }
 
   // Returns true when the command should end.

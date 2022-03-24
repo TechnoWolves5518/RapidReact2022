@@ -4,12 +4,16 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 
 public class TurnLeft extends CommandBase {
   /** Creates a new TurnLeft. */
+  XboxController driver = RobotContainer.driverController;
+  double speedModifier;
+
   public TurnLeft() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_exampleSubsystem);
@@ -23,7 +27,21 @@ public class TurnLeft extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.m_exampleSubsystem.setMotors(1 * RobotMap.speedMod, 1 * RobotMap.speedMod);
+    // bumper check for slowmode
+    boolean fastModeToggle = driver.getRightBumper();
+    boolean slowModeToggle = driver.getLeftBumper();
+    if (fastModeToggle && slowModeToggle == true) {
+      speedModifier = RobotMap.speedMod;
+    } else if (fastModeToggle == true) {
+      speedModifier = RobotMap.fastMod;
+    } else if (slowModeToggle == true) {
+      speedModifier = RobotMap.slowmod;
+    } else {
+      speedModifier = RobotMap.speedMod;
+    }
+    RobotContainer.m_exampleSubsystem.setMotors(
+        1 * speedModifier,
+        1 * speedModifier);
   }
 
   // Called once the command ends or is interrupted.
