@@ -25,11 +25,13 @@ public class ClimberDown extends CommandBase {
   public void execute() {
     // run the climber as long as there is an input on dpad up
     RobotContainer.m_climberSubsystem.setMotors(-1 * RobotMap.climberSpeedMod);
+    System.out.println("climber running");
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    RobotContainer.m_climberSubsystem.setMotors(0);
   }
 
   // Returns true when the command should end.
