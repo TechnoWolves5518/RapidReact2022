@@ -8,14 +8,15 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 
-public class AutoDriveBackward extends CommandBase {
-  // set a time count variable
+public class AutoDriveForward2 extends CommandBase {
+  // create a time count variable
   int count = 0;
-  // set a force stop variables
+  // create a force stop variable
   boolean stopCheck = false;
 
   /** Creates a new DriveForward. */
-  public AutoDriveBackward() {
+
+  public AutoDriveForward2() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_exampleSubsystem);
   }
@@ -28,9 +29,8 @@ public class AutoDriveBackward extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // force the motors to go backward
-    RobotContainer.m_exampleSubsystem.setMotors(-1 * RobotMap.speedMod, 1 * RobotMap.speedMod);
-    // check if code has run long enough, if it has, force stop the command
+    // drive the bot forward for a set amount of time, then stop
+    RobotContainer.m_exampleSubsystem.setMotors(1 * RobotMap.speedMod, -1 * RobotMap.speedMod);
     if (count < 25) {
       count++;
     } else {

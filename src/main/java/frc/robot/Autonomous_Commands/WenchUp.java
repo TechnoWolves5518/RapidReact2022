@@ -7,17 +7,13 @@ package frc.robot.Autonomous_Commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
+//import frc.robot.commands.IntakeCommand;
 
-public class AutoDriveBackward1 extends CommandBase {
-  // set a time count variable
-  int count = 0;
-  // set a force stop variables
-  boolean stopCheck = false;
-
-  /** Creates a new DriveForward. */
-  public AutoDriveBackward1() {
+public class WenchUp extends CommandBase {
+  /** Creates a new WenchUp. */
+  public WenchUp() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_exampleSubsystem);
+    addRequirements(RobotContainer.m_intakeSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -28,26 +24,18 @@ public class AutoDriveBackward1 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // force the motors to go backward
-    RobotContainer.m_exampleSubsystem.setMotors(-1 * RobotMap.fastMod, 1 * RobotMap.fastMod);
-    // check if code has run long enough, if it has, force stop the command
-    if (count < 50) {
-      count++;
-    } else {
-      count = 0;
-      stopCheck = true;
-    }
+    RobotContainer.m_intakeSubsystem.setMotor(1 * RobotMap.intakeControlMod);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_exampleSubsystem.setMotors(0, 0);
+    RobotContainer.m_intakeSubsystem.setMotor(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return stopCheck;
+    return false;
   }
 }

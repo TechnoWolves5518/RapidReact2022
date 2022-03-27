@@ -6,8 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.ClimberDown;
-import frc.robot.commands.ClimberUp;
+//import frc.robot.commands.ClimberDown;
+//import frc.robot.commands.ClimberUp;
 //import frc.robot.commands.AutoHighShoot;
 //import frc.robot.commands.ConveyorCommand;
 import frc.robot.commands.ConveyorIn;
@@ -110,8 +110,8 @@ public class RobotContainer {
     // special controller binds
     specialyButton.whileHeld(new ConveyorIn());
     specialxButton.whileHeld(new ConveyorOut());
-    specialUpPOV.whileHeld(new ClimberUp());
-    specialDownPOV.whileHeld(new ClimberDown());
+    // specialUpPOV.whileHeld(new ClimberUp());
+    // specialDownPOV.whileHeld(new ClimberDown());
   }
 
   /**

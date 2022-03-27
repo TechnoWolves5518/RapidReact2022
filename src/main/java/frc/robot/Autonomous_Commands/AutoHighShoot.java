@@ -29,7 +29,7 @@ public class AutoHighShoot extends CommandBase {
   public void execute() {
     // run the shooter motors at full power for 5 seconds, then force stop the
     // command
-    RobotContainer.m_shooterSubsystem.setMotors(1, -1);
+    RobotContainer.m_shooterSubsystem.setMotors(-1, 1);
     if (count < 100) {
       count++;
     } else {

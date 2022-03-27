@@ -5,7 +5,8 @@
 package frc.robot.Autonomous_Commands.Autonomous_Command_Groups;
 
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
-import frc.robot.Autonomous_Commands.AutoDriveBackward;
+//import frc.robot.Autonomous_Commands.AutoDriveBackward;
+import frc.robot.Autonomous_Commands.AutoDriveBackward2;
 import frc.robot.commands.ConveyorIn;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -16,7 +17,7 @@ public class DriveToBall extends ParallelDeadlineGroup {
   public DriveToBall() {
     // Add the deadline command in the super() call. Add other commands using
     // addCommands().
-    super(new AutoDriveBackward());
+    super(new AutoDriveBackward2());
     // run conveyor as long as bot is driving
     addCommands(new ConveyorIn());
   }
