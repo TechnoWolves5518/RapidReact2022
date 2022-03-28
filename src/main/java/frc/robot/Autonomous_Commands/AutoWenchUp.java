@@ -28,7 +28,7 @@ public class AutoWenchUp extends CommandBase {
   @Override
   public void execute() {
     RobotContainer.m_intakeSubsystem.setMotor(0.8);
-    if (count < 40) {
+    if (count < 30) {
       count++;
     } else {
       count = 0;

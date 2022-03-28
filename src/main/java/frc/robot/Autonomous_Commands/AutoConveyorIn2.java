@@ -30,7 +30,7 @@ public class AutoConveyorIn2 extends CommandBase {
     // set the conveyor to run
     RobotContainer.m_conveyorSubsystem.setMotors(1);
     // run the autonomous conveyor loop for about 2.5 seconds, then force stop
-    if (count < 125) {
+    if (count < 100) {
       count++;
     } else {
       count = 0;

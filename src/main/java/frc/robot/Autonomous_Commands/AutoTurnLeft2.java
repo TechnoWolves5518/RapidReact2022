@@ -27,7 +27,7 @@ public class AutoTurnLeft2 extends CommandBase {
   @Override
   public void execute() {
     RobotContainer.m_exampleSubsystem.setMotors(-1 * RobotMap.slowmod, -1 * RobotMap.slowmod);
-    if (count < 10) {
+    if (count < 5) {
       count++;
       ;
     } else {

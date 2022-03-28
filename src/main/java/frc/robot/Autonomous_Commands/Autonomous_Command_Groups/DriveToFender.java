@@ -7,6 +7,7 @@ package frc.robot.Autonomous_Commands.Autonomous_Command_Groups;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Autonomous_Commands.AutoDriveForward;
 import frc.robot.Autonomous_Commands.AutoDriveForward2;
+import frc.robot.Autonomous_Commands.AutoTurnLeft2;
 //import frc.robot.Autonomous_Commands.AutoTurnRight;
 import frc.robot.Autonomous_Commands.AutoTurnRight2;
 
@@ -18,6 +19,6 @@ public class DriveToFender extends SequentialCommandGroup {
   public DriveToFender() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new AutoDriveForward2(), new AutoTurnRight2(), new AutoDriveForward());
+    addCommands(new AutoDriveForward2(), new AutoTurnLeft2(), new AutoDriveForward());
   }
 }
