@@ -31,7 +31,7 @@ public class AutoDriveForward2 extends CommandBase {
   public void execute() {
     // drive the bot forward for a set amount of time, then stop
     RobotContainer.m_exampleSubsystem.setMotors(1 * RobotMap.speedMod, -1 * RobotMap.speedMod);
-    if (count < 25) {
+    if (count < 10) {
       count++;
     } else {
       count = 0;
