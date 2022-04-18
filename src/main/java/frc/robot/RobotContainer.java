@@ -23,6 +23,7 @@ import frc.robot.commands.ShooterHigh;
 import frc.robot.commands.ShooterLow;
 import frc.robot.commands.TurnLeft;
 import frc.robot.commands.TurnRight;
+import frc.robot.commands.WenchUp;
 //import frc.robot.commands.Autonomous_Commands.AutoDriveBackward1;
 //import frc.robot.commands.Autonomous_Commands.AutoDriveForward;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -79,6 +80,7 @@ public class RobotContainer {
   JoystickButton specialyButton = new JoystickButton(specialController, Constants.yButton);
   JoystickButton specialxButton = new JoystickButton(specialController, Constants.xButton);
   JoystickButton specialLStickButton = new JoystickButton(specialController, Constants.leftStickButton);
+  JoystickButton specialRightBumper = new JoystickButton(specialController, Constants.rightBumper);
   POVButton specialUpPOV = new POVButton(specialController, 0);
   POVButton specialDownPOV = new POVButton(specialController, 180);
 

@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.Autonomous_Commands.Autonomous_Command_Groups.Autonomous_Sets.DemoAuto;
 import frc.robot.Autonomous_Commands.Autonomous_Command_Groups.Autonomous_Sets.TwoBallRight;
 //import frc.robot.commands.ConveyorCommand;
 //import frc.robot.commands.DriveTrainCommand;
@@ -109,7 +110,7 @@ public class Robot extends TimedRobot {
       Output.set(false);
     }
     // change this line below to the desired autonomous
-    m_autonomousCommand = new TwoBallRight();
+    m_autonomousCommand = new DemoAuto();
     // schedule the autonomous command (example)
     m_autonomousCommand.schedule();
     m_autoSelected = m_chooser.getSelected();
